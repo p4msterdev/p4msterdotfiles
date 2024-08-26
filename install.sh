@@ -26,10 +26,10 @@ else
 fi
 
 # Install necessary packages from official repositories
-sudo pacman -S --needed hyprland kitty ranger git pipewire bluez bluez-utils btop networkmanager dart-sass wl-clipboard brightnessctl swww python gnome-bluetooth-3.0 hyprpaper hyprlock hyprcursor xdg-desktop-portal-hyprland zathura thunar nwg-look obs-studio
+sudo pacman -S --needed hyprland kitty ranger git pipewire bluez bluez-utils btop networkmanager dart-sass wl-clipboard brightnessctl swww python gnome-bluetooth-3.0 hyprpaper hyprlock hyprcursor xdg-desktop-portal-hyprland zathura thunar nwg-look obs-studio noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-joypixels ttf-symbola ttf-dejavu ttf-font-awesome ttf-material-design-icons
 
 # Install AUR packages using Paru
-paru -S --needed grimblast-git gpu-screen-recorder hyprpicker matugen-bin python-gpustat aylurs-gtk-shell-git bun-bin papirus-icon-theme-git papirus-folders-catppuccin-git sddm-git
+paru -S --needed grimblast-git gpu-screen-recorder hyprpicker matugen-bin python-gpustat aylurs-gtk-shell-git bun-bin papirus-icon-theme-git papirus-folders-catppuccin-git sddm-git ttf-ms-fonts ttf-google-fonts-git ttf-apple-emoji
 
 
 # Enable Chaotic AUR
@@ -58,6 +58,10 @@ cp -r /tmp/p4msterdotfiles/Pictures/Wallpapers/* ~/Pictures/Wallpapers/
 mkdir -p ~/.config/ags
 git clone https://github.com/Jas-SinghFSU/HyprPanel.git
 ln -s $(pwd)/HyprPanel $HOME/.config/ags
+
+# Install Hyprpanel fonts
+cd Hyprpanel
+./install_fonts.sh
 
 # Install SDDM Astronaut Theme
 git clone https://github.com/Keyitdev/sddm-astronaut-theme.git /tmp/sddm-astronaut-theme
