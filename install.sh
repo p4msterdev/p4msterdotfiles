@@ -54,14 +54,20 @@ cp -r /tmp/p4msterdotfiles/.config/* ~/.config/
 mkdir -p ~/Pictures/Wallpapers
 cp -r /tmp/p4msterdotfiles/Pictures/Wallpapers/* ~/Pictures/Wallpapers/
 
-# install hyprpanel
+# Install HyprPanel
 mkdir -p ~/.config/ags
+cd /tmp
 git clone https://github.com/Jas-SinghFSU/HyprPanel.git
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to clone HyprPanel repository."
+    exit 1
+fi
 ln -s $(pwd)/HyprPanel $HOME/.config/ags
 
-# Install Hyprpanel fonts
-cd Hyprpanel
+# Install NerdFonts used by HyprPanel
+cd HyprPanel
 ./install_fonts.sh
+
 
 # Install SDDM Astronaut Theme
 git clone https://github.com/Keyitdev/sddm-astronaut-theme.git /tmp/sddm-astronaut-theme
