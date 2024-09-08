@@ -26,7 +26,7 @@ else
 fi
 
 # Install necessary packages from official repositories
-sudo pacman -S --needed hyprland kitty ranger git pipewire bluez bluez-utils btop networkmanager dart-sass wl-clipboard brightnessctl swww python gnome-bluetooth-3.0 hyprpaper hyprlock hyprcursor xdg-desktop-portal-hyprland zathura thunar nwg-look obs-studio noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-joypixels ttf-symbola ttf-dejavu ttf-font-awesome ttf-material-design-icons
+sudo pacman -S --needed hyprland kitty ranger git pipewire bluez bluez-utils btop networkmanager dart-sass wl-clipboard brightnessctl swww python gnome-bluetooth-3.0 hyprpaper hyprlock hyprcursor xdg-desktop-portal-hyprland zathura thunar nwg-look obs-studio noto-fonts noto-fonts-emoji noto-fonts-cjk ttf-joypixels ttf-symbola ttf-dejavu ttf-font-awesome ttf-material-design-icons nano
 
 # Install AUR packages using Paru
 paru -S --needed grimblast-git gpu-screen-recorder hyprpicker matugen-bin python-gpustat aylurs-gtk-shell-git bun-bin papirus-icon-theme-git papirus-folders-catppuccin-git sddm-git ttf-ms-fonts ttf-google-fonts-git ttf-apple-emoji
@@ -37,9 +37,11 @@ echo "[chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
 
 # Add Chaotic AUR key and update package database
-sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-sudo pacman-key --lsign-key 3056513887B78AEB
-sudo pacman -Sy chaotic-aur
+pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key 3056513887B78AEB
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
 
 # Install packages from Chaotic AUR
 sudo pacman -S localsend obsidian librefox vesktop
