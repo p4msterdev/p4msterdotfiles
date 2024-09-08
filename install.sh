@@ -31,18 +31,24 @@ sudo pacman -S --needed hyprland kitty ranger git pipewire bluez bluez-utils bto
 # Install AUR packages using Paru
 paru -S --needed grimblast-git gpu-screen-recorder hyprpicker matugen-bin python-gpustat aylurs-gtk-shell-git bun-bin papirus-icon-theme-git papirus-folders-catppuccin-git sddm-git ttf-ms-fonts ttf-google-fonts-git ttf-apple-emoji
 
+# Setup Chaotic AUR repository (follows official instructions)
 
-
-
-# Add Chaotic AUR key and update package database
+# Import the key
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
+
+# Install the chaotic-keyring and chaotic-mirrorlist
 sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
 sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
-# Enable Chaotic AUR
-echo "[chaotic-aur]
+# Enable Chaotic AUR (requires sudo)
+if ! grep -q "[chaotic-aur]" /etc/pacman.conf; then
+    echo "[chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
+fi
+
+# Update the package database (requires sudo)
+sudo pacman -Sy chaotic-aur
 
 # Install packages from Chaotic AUR
 sudo pacman -S localsend obsidian librefox vesktop
