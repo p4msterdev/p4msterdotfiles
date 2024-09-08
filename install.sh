@@ -32,16 +32,17 @@ sudo pacman -S --needed hyprland kitty ranger git pipewire bluez bluez-utils bto
 paru -S --needed grimblast-git gpu-screen-recorder hyprpicker matugen-bin python-gpustat aylurs-gtk-shell-git bun-bin papirus-icon-theme-git papirus-folders-catppuccin-git sddm-git ttf-ms-fonts ttf-google-fonts-git ttf-apple-emoji
 
 
+
+
+# Add Chaotic AUR key and update package database
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
 # Enable Chaotic AUR
 echo "[chaotic-aur]
 Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
-
-# Add Chaotic AUR key and update package database
-pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key 3056513887B78AEB
-pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-
 
 # Install packages from Chaotic AUR
 sudo pacman -S localsend obsidian librefox vesktop
